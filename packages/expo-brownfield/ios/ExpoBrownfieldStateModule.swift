@@ -19,8 +19,8 @@ public class ExpoBrownfieldStateModule: Module {
         return state.get()
       }
       
-      Function("set") { (state: SharedState, value: JavaScriptValue?) in
-        state.set(value?.getAny())
+      Function("set") { (state: SharedState, value: SharedStateValue) in
+        state.set(value.value)
       }
     }
 
@@ -43,5 +43,20 @@ public class ExpoBrownfieldStateModule: Module {
 
   public func notifyKeyRecreated(_ key: String) {
     sendEvent(KEY_RECREATED_EVENT_NAME, ["key": key])
+  }
+}
+
+// MARK: - SharedStateValue
+
+/**
+ The raw value passed to `SharedState.set` from JavaScript, converted to its native representation
+ (`nil` for `null` and `undefined`). A module definition cannot take a bare `Any?` argument, so the
+ value arrives through this `Convertible` wrapper.
+ */
+struct SharedStateValue: Convertible {
+  let value: Any?
+
+  static func convert(from value: Any?, appContext: AppContext) throws -> SharedStateValue {
+    return SharedStateValue(value: value)
   }
 }
