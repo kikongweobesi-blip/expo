@@ -1,5 +1,11 @@
 # Changelog
 
+## 58.0.12
+
+### Patch Changes
+
+- Pass the current `pathname` and `params` props to the `+html` component. ([6aa901d](https://github.com/expo/expo/commit/6aa901dab0b817aa8664919179d5acb1649c06a7))
+
 ## 58.0.11
 
 No changes in this release.

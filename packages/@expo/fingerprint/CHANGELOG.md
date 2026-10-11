@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.21.5
+
+### Patch Changes
+
+- Updated dependencies. ([98cdb6e](https://github.com/expo/expo/commit/98cdb6e75198af13013254268a5e8ce1e85acb92))
+  - @expo/env@2.5.2
+
 ## 0.21.4
 
 ### Patch Changes

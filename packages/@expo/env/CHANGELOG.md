@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.2
+
+### Patch Changes
+
+- Fix `PYTHONNOUSERSITE` not being blocked in `.env` files due to a typo. ([98cdb6e](https://github.com/expo/expo/commit/98cdb6e75198af13013254268a5e8ce1e85acb92))
+
 ## 2.5.1
 
 ### Patch Changes

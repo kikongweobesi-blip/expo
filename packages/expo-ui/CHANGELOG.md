@@ -1,5 +1,14 @@
 # Changelog
 
+## 58.0.16
+
+### Patch Changes
+
+- [iOS] Fix the community `BottomSheet` clipping its content when the sheet is narrower than the window, as on iPhone Duo. When the sheet sized itself to its content, the content was pinned to the window width and centered in the sheet, so its leading edge was cut off. The content now takes its width from the sheet and its height from the content. `presentationSizing` takes a `fitted` option (`{ horizontal, vertical }`) to fit a sheet to its content on one axis only. ([f9d5ae1](https://github.com/expo/expo/commit/f9d5ae174300c690bbe0d4f6a0741a81619666be))
+- [Android] Fix an `RNHostView` that ignores touches when a Compose button with a ripple in the same `Host` was pressed earlier. The ripple container that Compose adds was found first during React Native's touch-target search, so the touch went to the `Host` instead of the hosted view. ([a36791d](https://github.com/expo/expo/commit/a36791d67403f0877dce3734ce4f147a8151dd29))
+- [Android] Fix a numeric `width()` modifier crashing the app on launch with `FieldCastException: Cannot cast value for field 'width'` since the `IntrinsicSize` support added in 57.0.22 / 58.0.9. JS numbers reach the modifier record as `Double`, which matched neither branch of `Either<Int, IntrinsicSizeType>`; the field is now `Either<Double, IntrinsicSizeType>`, so numeric widths convert again and `width(IntrinsicSize.Min|Max)` keeps working. ([0151f5a](https://github.com/expo/expo/commit/0151f5a7dc8f3fb0f5211547f3fce73ca7ae83cc))
+- [iOS] Add `cornerRadius` and `opacity` to `Chart`'s `pieStyle`. Pie slices could not have rounded corners, and their opacity was fixed at 0.8, so a chart drawn in solid colors always looked washed out. Both default to the previous behavior. Rounded corners let a single-slice donut work as a progress ring with rounded ends. ([ceaba6f](https://github.com/expo/expo/commit/ceaba6fec60434b1085afbca41abea9612c41273))
+
 ## 58.0.15
 
 ### Patch Changes

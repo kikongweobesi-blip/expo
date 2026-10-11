@@ -1,5 +1,12 @@
 # Changelog
 
+## 58.0.11
+
+### Patch Changes
+
+- [iOS] Add `JavaScriptCallback`, a JavaScript function that native code can keep and call later from any thread, and `JavaScriptValue.isThenable()`. Bindings generated for `@JS` functions use `JavaScriptCallback` to pass a closure argument. ([4be8b49](https://github.com/expo/expo/commit/4be8b496c05d98f61530bc7bf851162360ac0d6a))
+- [iOS] Add ref-based alternatives to the `JavaScriptValue` container APIs: `JavaScriptArray.forEachIndexed(_:)`, `JavaScriptPromise.resolve(_: JavaScriptValue)` and `JavaScriptValuesBuffer.copying(in:values: [JavaScriptValue.Ref])`. ([4039ca1](https://github.com/expo/expo/commit/4039ca12073afb41c1cc5bca0fef9ebc9d717733))
+
 ## 58.0.10
 
 ### Patch Changes
