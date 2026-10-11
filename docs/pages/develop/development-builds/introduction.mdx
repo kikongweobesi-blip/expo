@@ -1,49 +1,310 @@
----
-title: Introduction to development builds
-sidebar_title: Introduction and setup
-description: Learn how to create a development build in your Expo project and why use a development build instead of Expo Go.
-searchRank: 98
-searchPosition: 1
-hideTOC: true
-hasVideoLink: true
----
+PROJET : APPLICATION DE GESTION SCOLAIRE INTÉGRÉE
 
-import { BuildMethodForm } from '~/scenes/develop/development-builds/BuildMethodForm';
-import { DevelopmentBuildInstructions } from '~/scenes/develop/development-builds/DevelopmentBuildInstructions';
-import DevelopmentBuildAgentPrompt from '~/scenes/develop/development-builds/instructions/agent-prompt.mdx';
-import { RelatedSkills } from '~/ui/components/RelatedSkills';
-import { VideoBoxLink } from '~/ui/components/VideoBoxLink';
+1. Présentation générale
 
-<DevelopmentBuildAgentPrompt />
+Crée une application web et mobile professionnelle appelée GESTION SCOLAIRE INTÉGRÉE – GSI RDC, destinée à gérer une école maternelle, primaire et secondaire en République démocratique du Congo.
 
-When you create a new Expo app with [`create-expo-app`](/get-started/create-a-project/), you start with a project where you update TypeScript/JavaScript code on your local machine and view the changes in the Expo Go app. A **development build** is essentially **your own version of Expo Go** where you are free to use any native libraries and change any native configuration.
+L'application doit être moderne, sécurisée, facile à utiliser en français, compatible avec les téléphones Android, les ordinateurs et les tablettes.
 
-A **development build is recommended when you want to create your own app and release to app stores**. It includes the [`expo-dev-client`](/versions/latest/sdk/dev-client/) library, which augments the built-in React Native development tooling. The tooling also includes support for inspecting network requests and a ["launcher" UI](/develop/development-builds/use-development-builds/#the-launcher-screen) that lets you switch between different development servers (such as between a server running on your machine or a teammate's machine) and deployments of your app (such as published updates with [EAS Update](/eas-update/introduction/)).
+L'application doit posséder une véritable base de données relationnelle, enregistrer automatiquement les informations et permettre l'exportation des données en Excel, PDF et CSV.
 
-<VideoBoxLink
-  videoId="FdjczjkwQKE"
-  title="Expo Go & Development Builds: which should you use?"
-  description="In this tutorial video, Beto explains what each of them is and when to choose a development build."
-/>
+Prévoir une interface simple, avec un tableau de bord présentant les statistiques générales de l'école.
 
-## How would you like to build your development build?
+2. Gestion des inscriptions des élèves
 
-All three methods produce the same development build. They differ in where the app compiles and what you need to have installed on your machine.
+Créer un module d'inscription et de réinscription comprenant :
 
-<BuildMethodForm />
+- Numéro matricule unique de l'élève.
+- Nom, postnom et prénom.
+- Sexe.
+- Date et lieu de naissance.
+- Nationalité.
+- Adresse et téléphone.
+- Nom du père, de la mère ou du tuteur.
+- Téléphone du parent ou tuteur.
+- Personne à contacter en cas d'urgence.
+- École de provenance.
+- Année scolaire.
+- Cycle : maternelle, primaire ou secondaire.
+- Classe et section.
+- Option pour les élèves du secondaire.
+- Date d'inscription.
+- Photo de l'élève.
+- Documents scolaires et administratifs.
+- Statut : inscrit, réinscrit, transféré, abandonné ou diplômé.
 
----
+Générer automatiquement une fiche d'inscription imprimable et un numéro matricule unique.
 
-<DevelopmentBuildInstructions />
+Empêcher les doublons d'élèves et conserver l'historique scolaire de chaque élève.
 
----
+3. Organisation des classes
 
-## After you install the development build
+Permettre la création et la modification des cycles, classes, options et sections.
 
-Launch the development build from your device's Home screen and connect to a development server from the launcher screen to start working on your app. To learn how to use your new build, including the launcher screen, rebuilding, and debugging, see [Use a development build](/develop/development-builds/use-development-builds/). For common questions about development builds and Expo Go, including what you can't do in Expo Go and why, see the [FAQ](/develop/development-builds/faq/).
+Prévoir notamment :
 
-### Expo Skills for AI agents
+- Maternelle : 1re, 2e et 3e année.
+- Primaire : 1re, 2e, 3e, 4e, 5e et 6e année.
+- Secondaire : 7e et 8e années de l'éducation de base, puis 1re, 2e, 3e et 4e années des humanités, selon l'organisation scolaire applicable.
+- Options configurables : nutrition, pédagogie, commerciale et gestion, agronomie, mécanique, électricité, sociale et autres options ajoutables.
 
-If you use an AI agent, install [Expo Skills](/skills/) to teach it the workflows on this page:
+Les classes, options, sections et années scolaires doivent être modifiables par l'administrateur.
 
-<RelatedSkills names={['expo-dev-client', 'eas-simulator']} />
+4. Gestion et perception des frais scolaires
+
+Créer un module complet de facturation et de perception.
+
+Fonctionnalités :
+
+- Définir les frais scolaires par année, cycle, classe et catégorie.
+- Enregistrer les frais d'inscription, frais scolaires, frais d'examen et autres frais autorisés.
+- Enregistrer les paiements complets ou partiels.
+- Gérer les paiements en USD et en CDF.
+- Enregistrer le taux de change utilisé lors de chaque opération.
+- Générer automatiquement un numéro de reçu unique.
+- Imprimer un reçu officiel avec le nom de l'école, le logo, le numéro du reçu, le nom de l'élève, sa classe, le montant payé, le solde restant, la date et la signature du caissier.
+- Calculer automatiquement le montant total dû, le montant déjà payé et le solde.
+- Gérer les réductions et exonérations autorisées avec justification et approbation.
+- Afficher la liste des élèves en ordre et en retard de paiement.
+- Produire un rapport journalier, mensuel et annuel des recettes.
+- Enregistrer le mode de paiement : espèces, banque, mobile money ou autre.
+- Éviter la suppression non autorisée des reçus et conserver les annulations dans l'historique.
+
+5. Gestion des enseignants
+
+Créer un dossier individuel pour chaque enseignant avec :
+
+- Matricule du personnel.
+- Nom, postnom et prénom.
+- Sexe.
+- Date et lieu de naissance.
+- Adresse et téléphone.
+- Diplôme et qualification.
+- Spécialité.
+- Matières enseignées.
+- Classes attribuées.
+- Date d'engagement.
+- Type de contrat.
+- Grade ou fonction.
+- Salaire de base.
+- Primes et indemnités.
+- Statut : actif, suspendu, en congé ou sorti.
+- Photo et documents professionnels.
+
+Prévoir les fonctions suivantes :
+
+- Engagement d'un nouvel enseignant.
+- Modification de son dossier.
+- Affectation aux classes et matières.
+- Gestion des contrats et dates d'échéance.
+- Impression d'une fiche de personnel.
+- Génération d'une décision ou lettre d'engagement.
+- Historique des affectations et rémunérations.
+
+6. Gestion des agents administratifs
+
+Créer un module similaire pour les agents administratifs : directeur, préfet des études, secrétaire, comptable, caissier, surveillant, bibliothécaire, huissier, gardien, personnel d'entretien et autres agents.
+
+Enregistrer le matricule, l'identité, les coordonnées, les diplômes, la fonction, le service, la date d'engagement, le contrat, le salaire et le statut.
+
+Permettre l'engagement, l'affectation, la modification du dossier, l'impression des documents et la consultation de l'historique professionnel.
+
+7. Paiement des enseignants et du personnel administratif
+
+Créer un module de paie mensuelle.
+
+Fonctionnalités :
+
+- Définir le salaire de base de chaque agent.
+- Ajouter les primes et indemnités.
+- Enregistrer les retenues justifiées.
+- Calculer automatiquement le salaire net.
+- Gérer les avances sur salaire.
+- Enregistrer les paiements partiels et complets.
+- Gérer les paiements en USD ou en CDF.
+- Enregistrer la date, le mois concerné et le mode de paiement.
+- Produire une fiche de paie individuelle en PDF.
+- Imprimer un état général de paie.
+- Calculer les dépenses salariales par mois et par année.
+- Afficher les salaires payés, non payés et partiellement payés.
+- Conserver l'historique des paiements.
+
+Formule : salaire net = salaire de base + primes et indemnités − retenues applicables.
+
+Ne jamais enregistrer un paiement comme effectué sans confirmation de l'opération.
+
+8. Cotation des points des élèves
+
+Créer un module de gestion des notes par trimestre ou période scolaire.
+
+Fonctionnalités :
+
+- Définir les matières par classe.
+- Attribuer les enseignants aux matières.
+- Enregistrer les points obtenus aux interrogations, travaux pratiques, devoirs et examens.
+- Configurer les maxima de chaque épreuve.
+- Calculer automatiquement les totaux et pourcentages.
+- Calculer les moyennes par matière et la moyenne générale.
+- Afficher les points obtenus et les maxima.
+- Déterminer les résultats selon les critères définis par l'établissement et les règles scolaires applicables.
+- Permettre la correction des notes uniquement aux utilisateurs autorisés.
+- Conserver l'historique des modifications.
+- Calculer les classements selon les règles configurées.
+- Signaler les notes manquantes.
+- Empêcher les notes supérieures aux maxima autorisés.
+
+Pour la maternelle, prévoir une évaluation configurable par compétences et appréciations : acquis, en cours d'acquisition et non acquis.
+
+Pour le primaire et le secondaire, prévoir une cotation numérique configurable selon les maxima officiels ou ceux applicables à l'établissement.
+
+9. Production automatique des bulletins scolaires
+
+Créer un module de génération des bulletins en PDF, imprimables au format A4.
+
+Chaque bulletin doit contenir :
+
+- Logo et nom de l'établissement.
+- Année scolaire.
+- Identité de l'élève.
+- Matricule.
+- Classe, option et période scolaire.
+- Liste des matières.
+- Points obtenus et maxima.
+- Pourcentage et appréciation par matière.
+- Total des points obtenus.
+- Total des maxima.
+- Moyenne générale.
+- Pourcentage général.
+- Place ou rang, si applicable.
+- Décision de réussite ou d'échec selon les règles applicables.
+- Conduite, discipline, absences et observations.
+- Nom et signature du titulaire ou du professeur principal.
+- Signature de la direction et cachet de l'école.
+- Date de publication du bulletin.
+
+Pour la maternelle, générer un bulletin adapté aux compétences et observations.
+
+Permettre l'impression individuelle, l'impression en lot et l'archivage des bulletins par année scolaire.
+
+Ne jamais inventer les notes manquantes. Bloquer ou signaler la génération définitive si des données obligatoires sont absentes.
+
+10. Tableau de bord et rapports
+
+Afficher en temps réel :
+
+- Nombre total d'élèves inscrits.
+- Effectifs par cycle, classe et sexe.
+- Nombre d'enseignants et d'agents administratifs.
+- Total des frais facturés.
+- Total des recettes encaissées.
+- Montant restant à percevoir.
+- Total des salaires versés.
+- Salaires restant à payer.
+- Dépenses générales.
+- Solde de caisse calculé à partir des opérations enregistrées.
+- Résultats scolaires par classe et par période.
+
+Générer des rapports journaliers, mensuels, trimestriels et annuels, exportables en PDF, Excel et CSV.
+
+11. Base de données relationnelle
+
+Créer une vraie base de données persistante avec les tables suivantes :
+
+1. ecoles
+2. utilisateurs
+3. roles
+4. annees_scolaires
+5. cycles
+6. classes
+7. sections_options
+8. eleves
+9. responsables_eleves
+10. inscriptions
+11. frais_scolaires
+12. factures
+13. paiements_eleves
+14. recus
+15. enseignants
+16. agents_administratifs
+17. contrats_personnel
+18. affectations_personnel
+19. matieres
+20. affectations_enseignants
+21. periodes_scolaires
+22. evaluations
+23. notes
+24. bulletins
+25. rubriques_salariales
+26. fiches_paie
+27. paiements_personnel
+28. depenses
+29. caisses
+30. mouvements_caisse
+31. journaux_audit
+32. parametres_ecole
+
+Définir des clés primaires, des clés étrangères, des contraintes d'unicité et des index. Relier correctement les élèves aux inscriptions, les paiements aux factures, les notes aux élèves et aux évaluations, ainsi que les salaires aux agents du personnel.
+
+Utiliser des migrations de base de données et des règles de validation pour préserver la cohérence des données.
+
+12. Sécurité et utilisateurs
+
+Créer plusieurs niveaux d'accès :
+
+- Administrateur général : accès complet.
+- Promoteur ou gestionnaire : consultation et validation des opérations autorisées.
+- Directeur ou préfet : gestion pédagogique et validation des bulletins.
+- Secrétaire : inscriptions et dossiers des élèves.
+- Caissier ou comptable : facturation, paiements et reçus.
+- Responsable du personnel : dossiers, engagements et paie.
+- Enseignant : accès limité à ses classes, matières et notes.
+- Parent ou élève : consultation limitée des résultats, si cette fonction est activée.
+
+Mettre en place une authentification sécurisée, des mots de passe protégés, des autorisations côté serveur, des sauvegardes et un journal des opérations sensibles.
+
+Les enseignants ne doivent pas accéder aux salaires des autres agents. Le caissier ne doit pas pouvoir modifier les notes. Les utilisateurs ne doivent voir que les informations autorisées par leur rôle.
+
+13. Génération et gestion de la BDD
+
+Fournir :
+
+- Le schéma complet de la base de données.
+- Le script SQL de création des tables et relations.
+- Les clés primaires et étrangères.
+- Les règles de sécurité et d'accès.
+- Des données de démonstration clairement identifiées.
+- Un guide d'installation et de configuration.
+- Une procédure de sauvegarde et de restauration.
+- Une procédure d'exportation et d'importation des données.
+
+Utiliser Supabase avec PostgreSQL si la plateforme le permet. Sinon, proposer une base de données relationnelle compatible.
+
+Ne pas se limiter à créer une interface visuelle : toutes les opérations doivent fonctionner réellement et enregistrer les données dans la base de données.
+
+14. Technologies et interface
+
+Créer une application responsive, utilisable sur Android, ordinateur et tablette.
+
+Prévoir :
+
+- Une interface en français.
+- Un menu latéral simple.
+- Une recherche rapide des élèves et agents.
+- Des formulaires avec validation.
+- Des tableaux filtrables et paginés.
+- Des documents PDF et Excel téléchargeables.
+- Une gestion des erreurs claire.
+- Une navigation rapide même avec une connexion Internet lente.
+- Une architecture permettant une utilisation sécurisée en ligne.
+
+Prévoir la possibilité d'ajouter ultérieurement plusieurs établissements, sans mélanger leurs données.
+
+15. Résultat attendu
+
+Construire l'application module par module, connecter tous les formulaires à la base de données, tester les inscriptions, les paiements, les calculs de salaires, les notes et les bulletins.
+
+Créer d'abord la structure de la base de données, l'authentification et les rôles, puis les modules administratifs, financiers et pédagogiques.
+
+À la fin, fournir une application fonctionnelle, un compte administrateur initial configuré de manière sécurisée, le schéma SQL, la documentation et les instructions de déploiement.
+
+Ne pas afficher de fausses données comme des données réelles. Ne pas déclarer l'application terminée tant que les fonctionnalités n'ont pas été testées.
